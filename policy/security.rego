@@ -31,7 +31,7 @@ deny[msg] {
 }
 
 # Looking for latest docker image used
-warn[msg] {
+deny[msg] {
     input[i].Cmd == "from"
     val := split(input[i].Value[0], ":")
     count(val) == 1
@@ -39,7 +39,7 @@ warn[msg] {
 }
 
 # Looking for latest docker image used
-warn[msg] {
+deny[msg] {
     input[i].Cmd == "from"
     val := split(input[i].Value[0], ":")
     contains(val[1], image_tag_list[_])
